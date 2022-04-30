@@ -40,6 +40,41 @@ body {
 
 #body {
     flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+#body > ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#body > ul > li {
+    display: flex;
+    align-items: center;
+}
+
+#body h1 {
+    margin-left: 2vw;
+}
+
+#body a {
+    margin: 0 3vw;
+    font-size: 24px;
+    transition: all 0.5s ease;
+}
+
+#body a:hover {
+    font-size: 32px;
+}
+
+#body iframe {
+    width: 40vw;
+    height: 40vh;
 }
 
 
