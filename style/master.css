@@ -84,13 +84,13 @@ body {
     margin-left: 2vw;
 }
 
-#body a {
+#body_last_container > a {
     margin: 0 3vw;
     font-size: 24px;
     transition: all 0.5s ease;
 }
 
-#body a:hover {
+#body_last_container > a:hover {
     font-size: 32px;
 }
 
