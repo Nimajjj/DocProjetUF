@@ -3,11 +3,11 @@
 }
 
 #left_bar {
-    position: fixed;
     left: 0;
     height: 100%;
     border-right: 1px dashed #343a40;
     padding: 2vh 2vw;
+    width: 45%;
 }
 
 #left_bar > ul > li {
