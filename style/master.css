@@ -81,6 +81,7 @@ body {
 #body > ul > li {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 #body h1 {
