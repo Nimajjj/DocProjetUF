@@ -6,8 +6,8 @@
 }
 
 #left_bar_g > ul{
-    
     display: flex;
+    flex-wrap: wrap;
 }
 
 #left_bar_g > ul > li{
