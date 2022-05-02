@@ -91,11 +91,61 @@
             <div id="content">
                 <h1>Documentation installation infrastructure réseau</h1>
                 <br>
-                <h2>Sous titre voila voila :</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit hendrerit mi eget condimentum. Nam in dolor ac velit ornare cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus et tempor dui, in pharetra metus. Donec dolor tortor, mollis sed volutpat vel, interdum vitae ex. Suspendisse in convallis ipsum, sed congue purus. Mauris lacinia, nibh nec tincidunt consectetur, orci ipsum ultricies tellus, tristique condimentum urna odio eu tellus. Mauris viverra arcu odio, at malesuada massa vulputate quis. Morbi tempus ut nibh quis facilisis. Fusce at laoreet leo. Fusce feugiat enim nec interdum consectetur. Aliquam quis maximus ante. Maecenas ut odio volutpat, gravida arcu et, accumsan sem. Generated 1 paragraph, 112 words, 758 bytes of Lorem Ipsum</p>
-                <img src="../../../image/client%20linux%20default%20gateway.png">
-                <p class="legend"> Ceci est la légende de la photo ci-dessus </p>
+                <h2>Configuration réseau du firewall</h2>
+                <p>Afin de configurer votre réseau local ainsi que votre pare-feu nous devons au préalable l’avoir correctement installé.<br>
+                    Afin d’accéder à l’interface graphique de pfSense deux solution s’offre à vous :<br>
+                    Depuis le réseau local vous n’aurez qu’à rentrer l’ip LAN de votre pare-feu (cf. photo suivante).<br>
+                    Depuis le réseau WAN vous devrez au préalable rentrer dans le shell du pare-feu (commande 8) puis entrer la commande suivante « pfctl -d ».<br>
+                    Enfin vous pourrez rentre l’ip WAN du pare-feu depuis votre navigateur.</p>
+                <img src="../../../image/archi/pfminal.png">
+                <p class="legend">Après chaque modification importante sur la configuration du pare-feu vous devrez revenir entrer cette commande de nouveau.</p>
                 <br>
+                <p>Une fois connecté depuis votre navigateur sur l’ip du parefeu vous devrez entre le nom d’utilisateur « admin » et le mot de passe par défaut « pfsense ». </p>
+                <img src="../../../image/archi/pfligne.png">
+                <p>Ensuite s’en suivra une configuration classique, nous vous laissons le soin de lire attentivement chacune des étapes de l’installation et d’y remplir les informations demandées. Ici nous n’aborderons que les points primordiaux au bon fonctionnement de notre réseau :</p>
+                <img src="../../../image/archi/setuppf.png">
+                <p class="legend">étape 1</p>
+                <p>A cette étape de l’installation, pfSense vous demande de sélectionner une ip statique pour l’interface réseau local (LAN) du pare-feu. Ici nous choisissons la dernière ip utilisable du réseau ainsi que le masque de sous réseau que nous avions définit.
+                    Si l’installation se passe correctement vous devriez arriver sur la page suivante :
+                </p>
+                <img src="../../../image/archi/setuppf2.png">
+                <p class="legend">étape 2</p>
+                <p>La prochaine fois que vous vous connecterez à pfSense vous devriez arrivez sur votre tableau de bord :</p>
+                <img src="../../../image/archi/setuppf3.png">
+                <p class="legend">étape 3</p>
+                <p>Désormais nous pouvons commencer à configurer plus en détail le pare-feu.
+                    Premièrement nous souhaitons que notre réseau local puisse avoir accès à internet au travers de notre pare-feu. Pour cela nous devons autoriser les port http et HTTPS à passer.</p>
+                <img src="../../../image/archi/setuppf4.png">
+                <p class="legend">étape 4</p>
+                <img src="../../../image/archi/setuppf5.png">
+                <p class="legend">étape 5</p>
+                <img src="../../../image/archi/setuppf6.png">
+                <p class="legend">étape 6</p>
+                <p>Pour ajouter une nouvelle règle :</p>
+                    1.	Choisir si la règle va permettre ou bloquer la règle suivante<br>
+                    2.	Choisir sur quelle interface réseau la règle va s’appliquer<br>
+                    3.	Choisir sur quel protocole que cette règle va être appliquée<br>
+                    4.	La source doit être choisis ici, nous sélectionnerons « any » afin de sélectionner toutes les connexions entrantes<br>
+                    5.	Ici nous sélectionnerons la destination, soit « WAN address » puis le port utilisé : HTTP (80)<br>
+                    Nous pouvons traduire cette règle par :<br>
+                    « Nous laissons passer toutes les connexions sortantes du réseau en direction d’une adresse WAN passant par le port http (80) et utilisant le protocole TCP. »<br>
+                    Il faut désormais créer une règle identique mais utilisant les port HHTPS (443).<br>
+                    Une fois les règles créer le résultat devrait être le suivant :<br>
+                </p>
+                <img src="../../../image/archi/setuppf7.png">
+                <p class="legend">étape 7</p>
+                <p>Maintenant que nous autorisons l’utilisation des ports 80 et 443 sur notre réseau, il ne nous reste plus qu’à configurer la gestion DHCP du réseau local par pfSense.</p>
+                <img src="../../../image/archi/setuppf8.png">
+                <p class="legend">étape 8</p>
+                <img src="../../../image/archi/setuppf9.png">
+                <p class="legend">étape 9</p>
+                <p>1.	Activer l’utilisation de DHCP sur l’interface LAN<br>
+                    2.	Bien vérifier que les informations correspondent au plan réseau, dans le cas contraire vous devrez réinstaller les paramètres d’origine de pfSense afin de rentrer des informations valides<br>
+                    3.	Ici vous rentrez la plage d’ip disponible qui seront distribué automatiquement au poste de travail connecté sur votre réseau local.<br>
+                    4.	Nous conseillons de laisser un peu de marche pour les ip statique dans le cas où vous souhaitez ajoutez de nouvelle machine en nécessitant.<br>
+
+                    Félicitation, il ne vous reste plus qu’à sauvegarder et à redémarrer votre pare-feu.<br>
+                </p>
                 <h2>Encore un sous titre voila voila :</h2>
                 <p>Ci-dessous vous trouverez un exemple de bout de code en bash</p>
                 <pre><code>
