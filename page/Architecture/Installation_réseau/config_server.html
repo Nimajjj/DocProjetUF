@@ -89,32 +89,20 @@
             </div>
 
             <div id="content">
-                <h1>Documentation installation infrastructure réseau</h1>
+                <h1>Documentation installation infrastructure réseau - Configuration serveur</h1>
                 <br>
-                <h2>Sous titre voila voila :</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit hendrerit mi eget condimentum. Nam in dolor ac velit ornare cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus et tempor dui, in pharetra metus. Donec dolor tortor, mollis sed volutpat vel, interdum vitae ex. Suspendisse in convallis ipsum, sed congue purus. Mauris lacinia, nibh nec tincidunt consectetur, orci ipsum ultricies tellus, tristique condimentum urna odio eu tellus. Mauris viverra arcu odio, at malesuada massa vulputate quis. Morbi tempus ut nibh quis facilisis. Fusce at laoreet leo. Fusce feugiat enim nec interdum consectetur. Aliquam quis maximus ante. Maecenas ut odio volutpat, gravida arcu et, accumsan sem. Generated 1 paragraph, 112 words, 758 bytes of Lorem Ipsum</p>
-                <img src="../../../image/client%20linux%20default%20gateway.png">
-                <p class="legend"> Ceci est la légende de la photo ci-dessus </p>
+                <h2>Configuration réseau d’un serveur</h2>
+                <p>Les serveurs ont besoin d’un IP statique et toutes les machines linux ont besoin de définir leur passerelle par défaut.<br>
+                    Pour se faire nous vous invitons à ouvrir les paramètres de votre serveur :<br>
+                </p>
+                <img src="../../../image/archi/setupserv.png">
+                <p class="legend">Dans l’onglet « Network » (cf. 1) rentrer dans les paramètres de votre connexion (cf. 2).</p>
                 <br>
+                <img src="../../../image/archi/setupserv.png">
+                <p class="legend"Dans l’onglet « IPv4 » (cf.1) sélectionnez la méthode « Manual ».</p>
+                <p>Puis dans l’onglet addresses : rentrer l’ip statique que vous souhaitez pour votre serveur (cf. a), le masque de sous réseau définis au préalable (cf. b) et enfin l’ip de votre pare-feu vous reliant à internet (cf. c)</p>
                 <h2>Encore un sous titre voila voila :</h2>
                 <p>Ci-dessous vous trouverez un exemple de bout de code en bash</p>
-                <pre><code>
-                if [ $? -eq 0 ]; then
-                    $(rm temp)
-                    $(echo "$(date)    - Nothing changes since last backup" >> backup.log)
-                else
-                    $(rm lastBackup/last_backup.tar.gz)
-                    $(rm backups/*)
-                    $(cp temp backups/backup_$(date +"%Y-%m-%d_%T".tar.gz))
-                    $(cp temp lastBackup/last_backup.tar.gz)
-                    $(rm temp)
-                    $(tar -cf - backups/* | netcat  $ipBackupServer $port)
-                    $(echo "$(date) - Backup send to backup server" >> backup.log)
-                fi
-                </code></pre>
-                
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit hendrerit mi eget condimentum. Nam in dolor ac velit ornare cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus et tempor dui, in pharetra metus. Donec dolor tortor, mollis sed volutpat vel, interdum vitae ex. Suspendisse in convallis ipsum, sed congue purus. Mauris lacinia, nibh nec tincidunt consectetur, orci ipsum ultricies tellus, tristique condimentum urna odio eu tellus. Mauris viverra arcu odio, at malesuada massa vulputate quis. Morbi tempus ut nibh quis facilisis. Fusce at laoreet leo. Fusce feugiat enim nec interdum consectetur. Aliquam quis maximus ante. Maecenas ut odio volutpat, gravida arcu et, accumsan sem. Generated 1 paragraph, 112 words, 758 bytes of Lorem Ipsum</p>
-                
             </div>
         </div>
 
