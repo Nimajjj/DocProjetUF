@@ -89,7 +89,7 @@
             </div>
 
             <div id="content">
-                <h1>Documentation installation infrastructure réseau</h1>
+                <h1>Documentation installation infrastructure réseau - Configuration firewall</h1>
                 <br>
                 <h2>Configuration réseau du firewall</h2>
                 <p>Afin de configurer votre réseau local ainsi que votre pare-feu nous devons au préalable l’avoir correctement installé.<br>
@@ -146,25 +146,6 @@
 
                     Félicitation, il ne vous reste plus qu’à sauvegarder et à redémarrer votre pare-feu.<br>
                 </p>
-                <h2>Encore un sous titre voila voila :</h2>
-                <p>Ci-dessous vous trouverez un exemple de bout de code en bash</p>
-                <pre><code>
-                if [ $? -eq 0 ]; then
-                    $(rm temp)
-                    $(echo "$(date)    - Nothing changes since last backup" >> backup.log)
-                else
-                    $(rm lastBackup/last_backup.tar.gz)
-                    $(rm backups/*)
-                    $(cp temp backups/backup_$(date +"%Y-%m-%d_%T".tar.gz))
-                    $(cp temp lastBackup/last_backup.tar.gz)
-                    $(rm temp)
-                    $(tar -cf - backups/* | netcat  $ipBackupServer $port)
-                    $(echo "$(date) - Backup send to backup server" >> backup.log)
-                fi
-                </code></pre>
-                
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit hendrerit mi eget condimentum. Nam in dolor ac velit ornare cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus et tempor dui, in pharetra metus. Donec dolor tortor, mollis sed volutpat vel, interdum vitae ex. Suspendisse in convallis ipsum, sed congue purus. Mauris lacinia, nibh nec tincidunt consectetur, orci ipsum ultricies tellus, tristique condimentum urna odio eu tellus. Mauris viverra arcu odio, at malesuada massa vulputate quis. Morbi tempus ut nibh quis facilisis. Fusce at laoreet leo. Fusce feugiat enim nec interdum consectetur. Aliquam quis maximus ante. Maecenas ut odio volutpat, gravida arcu et, accumsan sem. Generated 1 paragraph, 112 words, 758 bytes of Lorem Ipsum</p>
-                
             </div>
         </div>
 
