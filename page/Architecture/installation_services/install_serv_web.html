@@ -124,7 +124,68 @@
                     Pour cela il suffit de rentrer l’ip sur serveur web sur votre navigateur (dans le réseau local).<br>
                     Vous devriez arrivez sur une page semblable à la suivante :<br>
                 </p>
-                <img src="../../../image/archi/serveurweb4.png">
+                <img src="../../../image/archi/apache%20default.png">
+                <p>Voici une liste de commande utile lié à Apache :<br>
+                Arrêté le service apache :<br>
+            </p>
+                <pre><code>sudo systemctl stop apache2</code></pre>
+                <br>
+                <p>Démarre le service apache :</p>
+                <pre><code>sudo systemctl start apache2</code></pre>
+                <br>
+                <p>Relance le service apache :</p>
+                <pre><code>sudo systemctl restart apache2</code></pre>
+                <br>
+                <p>Si vous n’avez que e configurer certains détails privilégiez la commande suivante afin d’éviter de couper la connexion à vos utilisateurs :</p>
+                <pre><code>sudo systemctl reload apache2</code></pre>
+                <br>
+                <p>Annule le lancement automatique du service apache au démarrage de la machine :</p>
+                <pre><code>sudo systemctl disable apache2</code></pre>
+                <br>
+                <p>Re active le lancement automatique du service apache au démarrage de la machine :</p>
+                <pre><code>sudo systemctl enable apache2</code></pre>
+                <br>
+                <h2>4.	Configuration d’un hôte virtuel</h2>
+                <p>Nous allons désormais configurer un hôte virtuel sur notre serveur apache, cela vous permettra d’utiliser plusieurs sites web différents avec pour chacun d’entre eux leurs propres options.<br>
+                    Dans le cas où vous ne souhaiter installer qu’un seul site web nous vous invitons à déplacer chacun des fichiers lui correspondant dans le répertoire /var/www/html. Vous n’avez plus qu’à redémarrer votre serveur Apache et tout est fini !<br>
+                    Notons que ce répertoire est également sur cette adresse que les requêtes sont redirigées dans le cas où elle ne se réfère à une adresse inexistante.<br>
+                    Pour l’explication nous utiliserons le faux nom de domaine « votre_domaine » :<br>
+                    Commençons par créer un répertoire votre_domaine comme suit :<br>
+                </p>
+                <pre><code>Sudo mkdir /var/www/votre_domaine</code></pre>
+                <br>
+                <p>Ensuite nous assignons la propriété du répertoire à la variable d’environnement $USER</p>
+                <pre><code>sudo chown -R $USER:$USER /var/www/your_domain</code></pre>
+                <br>
+                <p>Afin d’être sûr que seul le propriétaire puisse lire, modifier et exécuter les fichiers compris dans le répertoire :</p>
+                <pre><code>sudo chmod -R 755 /var/www/your_domain</code></pre>
+                <br>
+                <p>Désormais nous devons placer au minimum un fichier index.html dans notre répertoire nouvellement créé.<br>
+                    Nous devons maintenant créer un nouveau fichier de configuration afin qu’Apache affiche bien notre nouveau site.<br>
+                    Au lieu de modifier le fichier par défaut nous allons en créer un nouveau :<br>
+                </p>
+                <pre><code>Sudo vim /etc/apache2/sites-available/votre_domaine.conf</code></pre>
+                <p>Et nous y plaçons le code suivant :</p>
+                <pre><code> <VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName your_domain
+    ServerAlias www.your_domain
+    DocumentRoot /var/www/your_domain
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost> </code></pre>
+                <p>Activons notre nouveau fichier de configuration grâce à a2ensite : </p>
+                <pre><code>Sudo a2ensite votre_domaine.conf</code></pre>
+                <p>Désactivons l’ancien fichier de config :</p>
+                <pre><code>Sudo a2dissite 000-default.conf</code></pre>
+                <p>Puis vérifions que nous ne recevons aucune erreur :</p>
+                <pre><code>Sudo apache2ctl configtest</code></pre>
+                <p>La commande devrait vous répondre : « Syntax OK »</p>
+                <p>Il ne reste plus qu’à redémarrer Apache afin d’appliquer les changements :</p>
+                <pre><code>sudo systemctl restart apache2</code></pre>
+                <p>Vous pouvez désormais accéder à votre site web en tapant : http://votre_domaine</p>
+
+
             </div>
         </div>
 
