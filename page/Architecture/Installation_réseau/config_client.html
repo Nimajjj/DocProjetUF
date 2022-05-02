@@ -89,7 +89,7 @@
             </div>
 
             <div id="content">
-                <h1>Documentation installation infrastructure réseau - Configuration client</h1>
+                <h1>Installation réseau - Configuration client</h1>
                 <br>
                 <h2>Configuration réseau d’un client</h2>
                 <p>Windows :<br>
@@ -98,22 +98,22 @@
                     Linux :<br>
                     Par default Ubuntu n’identifie pas notre pare-feu comme passerelle par default pour accéder à internet. Ainsi nous devons la configurer manuellement. Malheureusement, étant donné que nous utilisons le DHCP sur nos machines clients, configuré la passerelle par défaut est légèrement plus compliquée qu’avec le serveur.
                     Pour se faire nous pouvons utiliser la commande suivante :<br>
-                    « ip route add default via <ip passerelle> » <br>
+                    <pre><code>ip route add default via [ip_passerelle]</code></pre>
                         Seul bémol de cette commande est qu’il faudra la retaper à chaque démarrage de l’ordinateur<br>
-                        Pour éviter ce problème deux solution existe :<br>
-                        Premièrement vous pouvez automatiser l’exécution de la commande à chaque démarrage du poste de travail via crontab. Vous devrez donc ajouter la commande suivante à votre crontab :
-                        « @reboot « ip route add default <ip passerelle> »<br>
+                       <br> Pour éviter ce problème deux solution existe :<br>
+                        Premièrement vous pouvez automatiser l’exécution de la commande à chaque démarrage du poste de travail via crontab. Vous devrez donc ajouter la commande suivante à votre crontab :<br>
+                            <pre><code>@reboot ip route add default via [ip_passerelle]</code></pre>
                             La seconde solution est celle que nous avons choisis :<br>
                             Nous devons modifier le ficher « /etc/NetworkManager/system-connections/Wired connection 1.nmconnection » pour y indiquer notre nouvelle passerelle par défaut :<br>
                 </p>
                 <img src="../../../image/archi/setupcl.png">
-                <p class="legend"> Puis nous rajoutons la ligne suivante à la fin de la partie [ipv4] du fichier : « route1=0.0.0.0/0,<ip passerelle>,100 »</p>
+                <p class=""> Puis nous rajoutons la ligne suivante à la fin de la partie [ipv4] du fichier : « route1=0.0.0.0/0,<ip passerelle>,100 »</p>
                 <br>
                 <img src="../../../image/archi/setupcl1.png">
-                <p class="legend"> Après avoir redémarré le poste de travail nous pouvons vérifier que la route a correctement été ajouté grâce à la commande « ip route »</p>
+                <p class=""> Après avoir redémarré le poste de travail nous pouvons vérifier que la route a correctement été ajouté grâce à la commande « ip route »</p>
                 <br>
                 <img src="../../../image/archi/setupcl2.png">
-                <p class="legend">Ici nous remarquons bien la première ligne qui correspond à l’ip de notre pare-feu .</p>
+                <p class="">Ici nous remarquons bien la première ligne qui correspond à l’ip de notre pare-feu .</p>
             </div>
         </div>
 
