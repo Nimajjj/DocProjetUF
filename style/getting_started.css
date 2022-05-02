@@ -13,3 +13,11 @@
 #left_bar_g > ul > li{
     margin: 1vh 2vw;
 }
+
+#left_bar_g a{
+    transition: all 0.15s ease;
+}
+
+#left_bar_g a:hover {
+    color: #e84f21;
+}
