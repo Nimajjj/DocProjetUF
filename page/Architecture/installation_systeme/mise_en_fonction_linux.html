@@ -89,32 +89,26 @@
             </div>
 
             <div id="content">
-                <h1>Documentation installation infrastructure réseau</h1>
+                <h1>Installation système: machine linux</h1>
                 <br>
                 <h2>Sous titre voila voila :</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit hendrerit mi eget condimentum. Nam in dolor ac velit ornare cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus et tempor dui, in pharetra metus. Donec dolor tortor, mollis sed volutpat vel, interdum vitae ex. Suspendisse in convallis ipsum, sed congue purus. Mauris lacinia, nibh nec tincidunt consectetur, orci ipsum ultricies tellus, tristique condimentum urna odio eu tellus. Mauris viverra arcu odio, at malesuada massa vulputate quis. Morbi tempus ut nibh quis facilisis. Fusce at laoreet leo. Fusce feugiat enim nec interdum consectetur. Aliquam quis maximus ante. Maecenas ut odio volutpat, gravida arcu et, accumsan sem. Generated 1 paragraph, 112 words, 758 bytes of Lorem Ipsum</p>
-                <img src="../../../image/client%20linux%20default%20gateway.png">
-                <p class="legend"> Ceci est la légende de la photo ci-dessus </p>
+                <p>Dans un premier temp nous avons besoin d'une image iso pour instaaller notre os</p>
+                <a href="https://www.commentcamarche.net/informatique/windows/757-creer-ou-ouvrir-un-fichier-iso-sur-pc/)  ">En savoir plus sur l'ISO</a><br>
+                <img src="../../../image/archi/Linux.1.png">
+                <p class="legend">On commence ici par préciser l’image utilisée pour l’installation de l’os (ici ubuntu).</p>
                 <br>
-                <h2>Encore un sous titre voila voila :</h2>
-                <p>Ci-dessous vous trouverez un exemple de bout de code en bash</p>
-                <pre><code>
-                if [ $? -eq 0 ]; then
-                    $(rm temp)
-                    $(echo "$(date)    - Nothing changes since last backup" >> backup.log)
-                else
-                    $(rm lastBackup/last_backup.tar.gz)
-                    $(rm backups/*)
-                    $(cp temp backups/backup_$(date +"%Y-%m-%d_%T".tar.gz))
-                    $(cp temp lastBackup/last_backup.tar.gz)
-                    $(rm temp)
-                    $(tar -cf - backups/* | netcat  $ipBackupServer $port)
-                    $(echo "$(date) - Backup send to backup server" >> backup.log)
-                fi
-                </code></pre>
-                
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit hendrerit mi eget condimentum. Nam in dolor ac velit ornare cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus et tempor dui, in pharetra metus. Donec dolor tortor, mollis sed volutpat vel, interdum vitae ex. Suspendisse in convallis ipsum, sed congue purus. Mauris lacinia, nibh nec tincidunt consectetur, orci ipsum ultricies tellus, tristique condimentum urna odio eu tellus. Mauris viverra arcu odio, at malesuada massa vulputate quis. Morbi tempus ut nibh quis facilisis. Fusce at laoreet leo. Fusce feugiat enim nec interdum consectetur. Aliquam quis maximus ante. Maecenas ut odio volutpat, gravida arcu et, accumsan sem. Generated 1 paragraph, 112 words, 758 bytes of Lorem Ipsum</p>
-                
+                <p>On lance ensuite notre machine:</p>
+                <img src="../../../image/archi/Linux.2.png">
+                <p>On choisit ensuite d'installer ubuntu: </p><br>
+                <img src="../../../image/archi/Linux.3.png">
+                <p>On choisit le clavier utilisé: </p><br>
+                <img src="../../../image/archi/Linux.4.png">
+                <p>On choisit une installation normale: </p><br>
+                <img src="../../../image/archi/linux.5.png">
+                <p>On definis ensuite l'utilisateur de la session</p><br>
+                <img src="../../../image/archi/linux.6.png">
+                <p>L'installation est terminée, il ne reste plus qu'a reboot !</p><br>
+                <img src="../../../image/archi/linux.7.png">
             </div>
         </div>
 
