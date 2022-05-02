@@ -3,6 +3,7 @@
 }
 
 #content > *:not(img) {
+    width: 70vw;
     margin-bottom: 1vh;
 }
 
@@ -15,7 +16,6 @@
 }
 
 #content img {
-    aspect-ratio: auto;
     max-height: 400px;
     margin-left: 2vw;
 }
