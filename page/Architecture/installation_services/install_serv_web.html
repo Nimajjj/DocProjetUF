@@ -92,19 +92,20 @@
                 <h1>Installation services - Installation Serveur WEB</h1>
                 <br>
                 <h2>1.	Installer apache</h2>
-                <p>Nous utiliserons Apache comme server HTTP. C’est une des technologies les plus utilisé dans le domaine de l’hébergement de serveur web.<br>
-                    Apache est disponible par défaut dans le répertoire d’application d’Ubuntu. Ainsi pour télécharger et installer la dernière version rentrez les commandes suivantes<br>
-                    sudo apt update<br>
-                    sudo apt install apach2<br>
+                <p>Nous utiliserons Apache comme server HTTP. C’est une des technologies les plus utilisées dans le domaine de l’hébergement de serveur web.<br>
+                    Apache est disponible par défaut dans le répertoire d’application d’Ubuntu. Ainsi pour télécharger et installer la dernière version rentrez les commandes suivantes : <br>
+                    
+                    <pre><code>sudo apt update</code></pre>
+                    <pre><code>sudo apt install apach2</code></pre>
                     Après avoir confirmé l’installation, apt installera automatiquement apache ainsi que toutes ses dépendances.<br>
                 </p>
                 <br><h2>2.	Ajuster le firewall de votre machine</h2>
-                <p>Une fois apache installer, il est nécessaire d’ajuster le parefeu intégré à ubuntu (UFW) afin d’autoriser les connection externe au port http (et https) par defaut<br>
-                    Commençons par afficher la liste des application enregistrés auprès d’UFW :<br>
+                <p>Une fois apache installé, il est nécessaire d’ajuster le pare-feu intégré à ubuntu (UFW) afin d’autoriser les connexions externes au port http (et https) par défaut.<br>
+                    Commençons par afficher la liste des applications enregistrées auprès d’UFW :<br>
                 </p>
                 <pre><code>sudo ufw app list</code></pre>
                 <img src="../../../image/archi/serveurweb.png">
-                <p class="legend">Apache correspond au port 80, Apache Secure au port 443 et Appach Full au deux.</p>
+                <p class="legend">Apache correspond au port 80, Apache Secure au port 443 et Apache Full aux deux.</p>
                 <br>
                 <p>Dans notre cas nous ouvrirons l’accès au port 80 :
                     <pre><code>sudo ufw allow ‘Apach Full’</code></pre><br>
@@ -114,41 +115,41 @@
                 <img src="../../../image/archi/serveurweb2.png">
                 <br><br>
                 <h2>3.	Tester votre serveur</h2>
-                <p>Notre serveur apache devrait désormais être opérationnelle.<br>
+                <p>Notre serveur apache devrait désormais être opérationnel.<br>
                     Nous allons vérifier cela en deux étapes. La première est de vérifier l’état du service :
                 </p>
                 <pre><code>sudo systemctl status apache2</code></pre>
                 <img src="../../../image/archi/serveurweb3.png"><br>
                 <p>Ensuite pour confirmer que le logiciel s’est correctement installé nous allons accéder à la page par défaut mise en place par apache.<br>
-                    Pour cela il suffit de rentrer l’ip sur serveur web sur votre navigateur (dans le réseau local).<br>
-                    Vous devriez arrivez sur une page semblable à la suivante :<br>
+                    Pour cela il suffit de rentrer l’ip du serveur web sur votre navigateur (depuis le réseau local). <br>
+                    Vous devriez arriver sur une page semblable à la suivante :<br>
                 </p>
                 <img src="../../../image/archi/apache%20default.png"> <br><br>
                 <p>Voici une liste de commande utile lié à Apache :<br>
-                Arrêté le service apache :<br>
+                Arrêter le service apache :<br>
             </p>
                 <pre><code>sudo systemctl stop apache2</code></pre>
                 <br>
-                <p>Démarre le service apache :</p>
+                <p>Démarrer le service apache :</p>
                 <pre><code>sudo systemctl start apache2</code></pre>
                 <br>
-                <p>Relance le service apache :</p>
+                <p>Relancer le service apache :</p>
                 <pre><code>sudo systemctl restart apache2</code></pre>
                 <br>
-                <p>Si vous n’avez que e configurer certains détails privilégiez la commande suivante afin d’éviter de couper la connexion à vos utilisateurs :</p>
+                <p>Si vous n’avez modifié que certains détails privilégiez la commande suivante afin d’éviter de couper la connexion à vos utilisateurs :</p>
                 <pre><code>sudo systemctl reload apache2</code></pre>
                 <br>
-                <p>Annule le lancement automatique du service apache au démarrage de la machine :</p>
+                <p>Annuler le lancement automatique du service apache au démarrage de la machine :</p>
                 <pre><code>sudo systemctl disable apache2</code></pre>
                 <br>
-                <p>Re active le lancement automatique du service apache au démarrage de la machine :</p>
+                <p>Re activer le lancement automatique du service apache au démarrage de la machine :</p>
                 <pre><code>sudo systemctl enable apache2</code></pre>
                 <br><br>
                 <h2>4.	Configuration d’un hôte virtuel</   h2>
                 <p>Nous allons désormais configurer un hôte virtuel sur notre serveur apache, cela vous permettra d’utiliser plusieurs sites web différents avec pour chacun d’entre eux leurs propres options.<br>
-                    Dans le cas où vous ne souhaiter installer qu’un seul site web nous vous invitons à déplacer chacun des fichiers lui correspondant dans le répertoire /var/www/html. Vous n’avez plus qu’à redémarrer votre serveur Apache et tout est fini !<br>
-                    Notons que ce répertoire est également sur cette adresse que les requêtes sont redirigées dans le cas où elle ne se réfère à une adresse inexistante.<br>
-                    Pour l’explication nous utiliserons le faux nom de domaine « votre_domaine » :<br>
+                    Dans le cas où vous ne souhaitez installer qu’un seul site web, nous vous invitons à déplacer chacun des fichiers lui correspondant dans le répertoire /var/www/html. Vous n’avez plus qu’à redémarrer votre serveur Apache et tout est fini !<br>
+                    Notons également que les requêtes sont redirigées sur ce répertoire dans le cas où elles se réfèrent à une adresse inexistante.<br>
+                    Pour l’explication nous utiliserons le faux nom de domaine « votre_domaine »<br>
                     Commençons par créer un répertoire votre_domaine comme suit :<br>
                 </p>
                 <pre><code>sudo mkdir /var/www/votre_domaine</code></pre>
