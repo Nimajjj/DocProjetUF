@@ -89,19 +89,20 @@
             </div>
 
             <div id="content">
-                <h1>Documentation installation infrastructure réseau - Configuration firewall</h1>
-                <br>
-                <h2>Configuration réseau du firewall</h2>
+
+                <h1>Installation réseau - Configuration du firewall</h1>
+                <h2>Configuration pfSense</h2>
+
                 <p>Afin de configurer votre réseau local ainsi que votre pare-feu nous devons au préalable l’avoir correctement installé.<br>
                     Afin d’accéder à l’interface graphique de pfSense deux solution s’offre à vous :<br>
                     Depuis le réseau local vous n’aurez qu’à rentrer l’ip LAN de votre pare-feu (cf. photo suivante).<br>
-                    Depuis le réseau WAN vous devrez au préalable rentrer dans le shell du pare-feu (commande 8) puis entrer la commande suivante « pfctl -d ».<br>
+                    Depuis le réseau WAN vous devrez au préalable rentrer dans le shell du pare-feu (commande 8) puis entrer la commande suivante <pre><code> pfctl -d </pre></code>
                     Enfin vous pourrez rentre l’ip WAN du pare-feu depuis votre navigateur.</p>
                 <img src="../../../image/archi/pfminal.png">
                 <p class="legend">Après chaque modification importante sur la configuration du pare-feu vous devrez revenir entrer cette commande de nouveau.</p>
                 <br>
                 <p>Une fois connecté depuis votre navigateur sur l’ip du parefeu vous devrez entre le nom d’utilisateur « admin » et le mot de passe par défaut « pfsense ». </p>
-                <img src="../../../image/archi/pfligne.png">
+                <img src="../../../image/archi/pfligne.png"> </br>
                 <p>Ensuite s’en suivra une configuration classique, nous vous laissons le soin de lire attentivement chacune des étapes de l’installation et d’y remplir les informations demandées. Ici nous n’aborderons que les points primordiaux au bon fonctionnement de notre réseau :</p>
                 <img src="../../../image/archi/setuppf.png">
                 <p class="legend">étape 1</p>
@@ -113,14 +114,16 @@
                 <p>La prochaine fois que vous vous connecterez à pfSense vous devriez arrivez sur votre tableau de bord :</p>
                 <img src="../../../image/archi/setuppf3.png">
                 <p class="legend">étape 3</p>
+                <br>
+                <h2>Ouverture des ports et acces internet</h2>
                 <p>Désormais nous pouvons commencer à configurer plus en détail le pare-feu.
                     Premièrement nous souhaitons que notre réseau local puisse avoir accès à internet au travers de notre pare-feu. Pour cela nous devons autoriser les port http et HTTPS à passer.</p>
                 <img src="../../../image/archi/setuppf4.png">
-                <p class="legend">étape 4</p>
+                <p class="legend">étape 1</p>
                 <img src="../../../image/archi/setuppf5.png">
-                <p class="legend">étape 5</p>
+                <p class="legend">étape 2</p>
                 <img src="../../../image/archi/setuppf6.png">
-                <p class="legend">étape 6</p>
+                <p class="legend">étape 3</p>
                 <p>Pour ajouter une nouvelle règle :</p>
                     1.	Choisir si la règle va permettre ou bloquer la règle suivante<br>
                     2.	Choisir sur quelle interface réseau la règle va s’appliquer<br>
@@ -129,16 +132,18 @@
                     5.	Ici nous sélectionnerons la destination, soit « WAN address » puis le port utilisé : HTTP (80)<br>
                     Nous pouvons traduire cette règle par :<br>
                     « Nous laissons passer toutes les connexions sortantes du réseau en direction d’une adresse WAN passant par le port http (80) et utilisant le protocole TCP. »<br>
-                    Il faut désormais créer une règle identique mais utilisant les port HHTPS (443).<br>
+                    Il faut désormais créer une règle identique mais utilisant les port HTTPS (443).<br>
                     Une fois les règles créer le résultat devrait être le suivant :<br>
                 </p>
                 <img src="../../../image/archi/setuppf7.png">
-                <p class="legend">étape 7</p>
+                <p class="legend">étape 4</p>
+                <br>
+                <h2>DHCP</h2>
                 <p>Maintenant que nous autorisons l’utilisation des ports 80 et 443 sur notre réseau, il ne nous reste plus qu’à configurer la gestion DHCP du réseau local par pfSense.</p>
                 <img src="../../../image/archi/setuppf8.png">
-                <p class="legend">étape 8</p>
+                <p class="legend">étape 5</p>
                 <img src="../../../image/archi/setuppf9.png">
-                <p class="legend">étape 9</p>
+                <p class="legend">étape 6</p>
                 <p>1.	Activer l’utilisation de DHCP sur l’interface LAN<br>
                     2.	Bien vérifier que les informations correspondent au plan réseau, dans le cas contraire vous devrez réinstaller les paramètres d’origine de pfSense afin de rentrer des informations valides<br>
                     3.	Ici vous rentrez la plage d’ip disponible qui seront distribué automatiquement au poste de travail connecté sur votre réseau local.<br>
