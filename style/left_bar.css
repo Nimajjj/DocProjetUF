@@ -22,3 +22,7 @@
 #left_bar > ul > li li:hover {
     margin-left: 2.5vw;
 }
+
+.current_tab {
+    color: #e84f21;
+}
