@@ -2,7 +2,7 @@
     margin: 2vh 2vw;
 }
 
-#content > *:not(img) {
+#content {
     width: 70vw;
     margin-bottom: 1vh;
 }
@@ -21,9 +21,13 @@
 }
 
 pre {
+    border-radius: 5px;
+    padding: 0.3%;
     width: fit-content;
+    margin: 0.5vh 0;
     margin-left: 2vw;
-    padding-right: 4vw;
+    
+    padding: 0.5vh 1vw;
     background-color: #f8f9fa;
     opacity: 0.7;
 }
