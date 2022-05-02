@@ -3,16 +3,14 @@
 }
 
 #left_bar {
-    left: 0;
     height: 100%;
+    width: 35vw;
     border-right: 1px dashed #343a40;
     padding: 2vh 2vw;
-    width: 45%;
 }
 
 #left_bar > ul > li {
     margin-bottom: 4vh;
-    
 }
 
 #left_bar > ul > li li {
@@ -22,5 +20,5 @@
 }
 
 #left_bar > ul > li li:hover {
-    margin-left: 3vw;
+    margin-left: 2.5vw;
 }
