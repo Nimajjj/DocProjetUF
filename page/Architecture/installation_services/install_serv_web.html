@@ -89,7 +89,7 @@
             </div>
 
             <div id="content">
-                <h1>Documentation installation infrastructure réseau - Installation Serveur Web</h1>
+                <h1>Installation services - Installation Serveur WEB</h1>
                 <br>
                 <h2>1.	Installer apache</h2>
                 <p>Nous utiliserons Apache comme server HTTP. C’est une des technologies les plus utilisé dans le domaine de l’hébergement de serveur web.<br>
@@ -144,7 +144,7 @@
                 <p>Re active le lancement automatique du service apache au démarrage de la machine :</p>
                 <pre><code>sudo systemctl enable apache2</code></pre>
                 <br><br>
-                <h2>4.	Configuration d’un hôte virtuel</h2>
+                <h2>4.	Configuration d’un hôte virtuel</   h2>
                 <p>Nous allons désormais configurer un hôte virtuel sur notre serveur apache, cela vous permettra d’utiliser plusieurs sites web différents avec pour chacun d’entre eux leurs propres options.<br>
                     Dans le cas où vous ne souhaiter installer qu’un seul site web nous vous invitons à déplacer chacun des fichiers lui correspondant dans le répertoire /var/www/html. Vous n’avez plus qu’à redémarrer votre serveur Apache et tout est fini !<br>
                     Notons que ce répertoire est également sur cette adresse que les requêtes sont redirigées dans le cas où elle ne se réfère à une adresse inexistante.<br>
