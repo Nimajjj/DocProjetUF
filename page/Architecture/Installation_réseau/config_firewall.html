@@ -113,14 +113,16 @@
                 <p>La prochaine fois que vous vous connecterez à pfSense vous devriez arrivez sur votre tableau de bord :</p>
                 <img src="../../../image/archi/setuppf3.png">
                 <p class="legend">étape 3</p>
+                <br>
+                <h2>Ouverture des ports et acces internet</h2>
                 <p>Désormais nous pouvons commencer à configurer plus en détail le pare-feu.
                     Premièrement nous souhaitons que notre réseau local puisse avoir accès à internet au travers de notre pare-feu. Pour cela nous devons autoriser les port http et HTTPS à passer.</p>
                 <img src="../../../image/archi/setuppf4.png">
-                <p class="legend">étape 4</p>
+                <p class="legend">étape 1</p>
                 <img src="../../../image/archi/setuppf5.png">
-                <p class="legend">étape 5</p>
+                <p class="legend">étape 2</p>
                 <img src="../../../image/archi/setuppf6.png">
-                <p class="legend">étape 6</p>
+                <p class="legend">étape 3</p>
                 <p>Pour ajouter une nouvelle règle :</p>
                     1.	Choisir si la règle va permettre ou bloquer la règle suivante<br>
                     2.	Choisir sur quelle interface réseau la règle va s’appliquer<br>
@@ -133,12 +135,14 @@
                     Une fois les règles créer le résultat devrait être le suivant :<br>
                 </p>
                 <img src="../../../image/archi/setuppf7.png">
-                <p class="legend">étape 7</p>
+                <p class="legend">étape 4</p>
+                <br>
+                <h2>DHCP</h2>
                 <p>Maintenant que nous autorisons l’utilisation des ports 80 et 443 sur notre réseau, il ne nous reste plus qu’à configurer la gestion DHCP du réseau local par pfSense.</p>
                 <img src="../../../image/archi/setuppf8.png">
-                <p class="legend">étape 8</p>
+                <p class="legend">étape 5</p>
                 <img src="../../../image/archi/setuppf9.png">
-                <p class="legend">étape 9</p>
+                <p class="legend">étape 6</p>
                 <p>1.	Activer l’utilisation de DHCP sur l’interface LAN<br>
                     2.	Bien vérifier que les informations correspondent au plan réseau, dans le cas contraire vous devrez réinstaller les paramètres d’origine de pfSense afin de rentrer des informations valides<br>
                     3.	Ici vous rentrez la plage d’ip disponible qui seront distribué automatiquement au poste de travail connecté sur votre réseau local.<br>
