@@ -125,11 +125,11 @@
                 <img src="../../../image/archi/setuppf6.png">
                 <p class="legend">étape 3</p>
                 <p>Pour ajouter une nouvelle règle :</p>
-                    1.	Choisir si la règle va permettre ou bloquer la règle suivante<br>
-                    2.	Choisir sur quelle interface réseau la règle va s’appliquer<br>
-                    3.	Choisir sur quel protocole que cette règle va être appliquée<br>
-                    4.	La source doit être choisis ici, nous sélectionnerons « any » afin de sélectionner toutes les connexions entrantes<br>
-                    5.	Ici nous sélectionnerons la destination, soit « WAN address » puis le port utilisé : HTTP (80)<br>
+                <code>&emsp</code>1.	Choisir si la règle va permettre ou bloquer la règle suivante<br>
+                <code>&emsp</code>2.	Choisir sur quelle interface réseau la règle va s’appliquer<br>
+                <code>&emsp</code>3.	Choisir sur quel protocole que cette règle va être appliquée<br>
+                <code>&emsp</code>4.	La source doit être choisis ici, nous sélectionnerons « any » afin de sélectionner toutes les connexions entrantes<br>
+                <code>&emsp</code>5.	Ici nous sélectionnerons la destination, soit « WAN address » puis le port utilisé : HTTP (80)<br>
                     Nous pouvons traduire cette règle par :<br>
                     « Nous laissons passer toutes les connexions sortantes du réseau en direction d’une adresse WAN passant par le port http (80) et utilisant le protocole TCP. »<br>
                     Il faut désormais créer une règle identique mais utilisant les port HTTPS (443).<br>
@@ -144,10 +144,10 @@
                 <p class="legend">étape 5</p>
                 <img src="../../../image/archi/setuppf9.png">
                 <p class="legend">étape 6</p>
-                <p>1.	Activer l’utilisation de DHCP sur l’interface LAN<br>
-                    2.	Bien vérifier que les informations correspondent au plan réseau, dans le cas contraire vous devrez réinstaller les paramètres d’origine de pfSense afin de rentrer des informations valides<br>
-                    3.	Ici vous rentrez la plage d’ip disponible qui seront distribué automatiquement au poste de travail connecté sur votre réseau local.<br>
-                    4.	Nous conseillons de laisser un peu de marche pour les ip statique dans le cas où vous souhaitez ajoutez de nouvelle machine en nécessitant.<br>
+                <p><code>&emsp</code>1.	Activer l’utilisation de DHCP sur l’interface LAN<br>
+                    <code>&emsp</code>2.	Bien vérifier que les informations correspondent au plan réseau, dans le cas contraire vous devrez réinstaller les paramètres d’origine de pfSense afin de rentrer des informations valides<br>
+                    <code>&emsp</code>3.	Ici vous rentrez la plage d’ip disponible qui seront distribué automatiquement au poste de travail connecté sur votre réseau local.<br>
+                    <code>&emsp</code>4.	Nous conseillons de laisser un peu de marche pour les ip statique dans le cas où vous souhaitez ajoutez de nouvelle machine en nécessitant.<br>
 
                     Félicitation, il ne vous reste plus qu’à sauvegarder et à redémarrer votre pare-feu.<br>
                 </p>
