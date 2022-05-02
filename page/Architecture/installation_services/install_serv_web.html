@@ -91,40 +91,39 @@
             <div id="content">
                 <h1>Documentation installation infrastructure réseau - Installation Serveur Web</h1>
                 <br>
-                <h2>Installation serveur web</h2>
                 <h2>1.	Installer apache</h2>
                 <p>Nous utiliserons Apache comme server HTTP. C’est une des technologies les plus utilisé dans le domaine de l’hébergement de serveur web.<br>
                     Apache est disponible par défaut dans le répertoire d’application d’Ubuntu. Ainsi pour télécharger et installer la dernière version rentrez les commandes suivantes<br>
-                    Sudo apt update<br>
-                    Sudo apt install apach2<br>
+                    sudo apt update<br>
+                    sudo apt install apach2<br>
                     Après avoir confirmé l’installation, apt installera automatiquement apache ainsi que toutes ses dépendances.<br>
                 </p>
-                <h2>2.	Ajuster le firewall de votre machine</h2>
+                <br><h2>2.	Ajuster le firewall de votre machine</h2>
                 <p>Une fois apache installer, il est nécessaire d’ajuster le parefeu intégré à ubuntu (UFW) afin d’autoriser les connection externe au port http (et https) par defaut<br>
                     Commençons par afficher la liste des application enregistrés auprès d’UFW :<br>
                 </p>
-                <pre><code>Sudo ufw app list</code></pre>
+                <pre><code>sudo ufw app list</code></pre>
                 <img src="../../../image/archi/serveurweb.png">
                 <p class="legend">Apache correspond au port 80, Apache Secure au port 443 et Appach Full au deux.</p>
-                
+                <br>
                 <p>Dans notre cas nous ouvrirons l’accès au port 80 :
-                    <pre><code>Sudo ufw allow ‘Apach Full’</code></pre>
-                    Nous pouvons vérifier le résultat :
-                    <pre><code>Sudo ufw status</code></pre>
+                    <pre><code>sudo ufw allow ‘Apach Full’</code></pre><br>
+                    Pour vérifier le résultat :
+                    <pre><code>sudo ufw status</code></pre>
                 </p>
                 <img src="../../../image/archi/serveurweb2.png">
-                <br>
+                <br><br>
                 <h2>3.	Tester votre serveur</h2>
                 <p>Notre serveur apache devrait désormais être opérationnelle.<br>
                     Nous allons vérifier cela en deux étapes. La première est de vérifier l’état du service :
                 </p>
-                <pre><code>Sudo systemctl status apache2</code></pre>
-                <img src="../../../image/archi/serveurweb3.png">
+                <pre><code>sudo systemctl status apache2</code></pre>
+                <img src="../../../image/archi/serveurweb3.png"><br>
                 <p>Ensuite pour confirmer que le logiciel s’est correctement installé nous allons accéder à la page par défaut mise en place par apache.<br>
                     Pour cela il suffit de rentrer l’ip sur serveur web sur votre navigateur (dans le réseau local).<br>
                     Vous devriez arrivez sur une page semblable à la suivante :<br>
                 </p>
-                <img src="../../../image/archi/apache%20default.png">
+                <img src="../../../image/archi/apache%20default.png"> <br><br>
                 <p>Voici une liste de commande utile lié à Apache :<br>
                 Arrêté le service apache :<br>
             </p>
@@ -144,7 +143,7 @@
                 <br>
                 <p>Re active le lancement automatique du service apache au démarrage de la machine :</p>
                 <pre><code>sudo systemctl enable apache2</code></pre>
-                <br>
+                <br><br>
                 <h2>4.	Configuration d’un hôte virtuel</h2>
                 <p>Nous allons désormais configurer un hôte virtuel sur notre serveur apache, cela vous permettra d’utiliser plusieurs sites web différents avec pour chacun d’entre eux leurs propres options.<br>
                     Dans le cas où vous ne souhaiter installer qu’un seul site web nous vous invitons à déplacer chacun des fichiers lui correspondant dans le répertoire /var/www/html. Vous n’avez plus qu’à redémarrer votre serveur Apache et tout est fini !<br>
@@ -152,35 +151,37 @@
                     Pour l’explication nous utiliserons le faux nom de domaine « votre_domaine » :<br>
                     Commençons par créer un répertoire votre_domaine comme suit :<br>
                 </p>
-                <pre><code>Sudo mkdir /var/www/votre_domaine</code></pre>
+                <pre><code>sudo mkdir /var/www/votre_domaine</code></pre>
                 <br>
                 <p>Ensuite nous assignons la propriété du répertoire à la variable d’environnement $USER</p>
-                <pre><code>sudo chown -R $USER:$USER /var/www/your_domain</code></pre>
+                <pre><code>sudo chown -R $USER:$USER /var/www/votre_domaine</code></pre>
                 <br>
                 <p>Afin d’être sûr que seul le propriétaire puisse lire, modifier et exécuter les fichiers compris dans le répertoire :</p>
-                <pre><code>sudo chmod -R 755 /var/www/your_domain</code></pre>
+                <pre><code>sudo chmod -R 755 /var/www/votre_domaine</code></pre>
                 <br>
                 <p>Désormais nous devons placer au minimum un fichier index.html dans notre répertoire nouvellement créé.<br>
                     Nous devons maintenant créer un nouveau fichier de configuration afin qu’Apache affiche bien notre nouveau site.<br>
                     Au lieu de modifier le fichier par défaut nous allons en créer un nouveau :<br>
                 </p>
-                <pre><code>Sudo vim /etc/apache2/sites-available/votre_domaine.conf</code></pre>
+                <pre><code>sudo vim /etc/apache2/sites-available/votre_domaine.conf</code></pre>
                 <p>Et nous y plaçons le code suivant :</p>
-                <pre><code> <VirtualHost *:80>
-    ServerAdmin webmaster@localhost
-    ServerName your_domain
-    ServerAlias www.your_domain
-    DocumentRoot /var/www/your_domain
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost> </code></pre>
+                <pre><code><xmp style="color: #212529;">
+                <VirtualHost *:80>
+                    ServerAdmin webmaster@localhost
+                    ServerName votre_domaine
+                    ServerAlias www.votre_domaine
+                    DocumentRoot /var/www/votre_domaine
+                    ErrorLog ${APACHE_LOG_DIR}/error.log
+                    CustomLog ${APACHE_LOG_DIR}/access.log combined
+                </VirtualHost> 
+                </xmp></code></pre><br>
                 <p>Activons notre nouveau fichier de configuration grâce à a2ensite : </p>
-                <pre><code>Sudo a2ensite votre_domaine.conf</code></pre>
+                <pre><code>sudo a2ensite votre_domaine.conf</code></pre>
                 <p>Désactivons l’ancien fichier de config :</p>
-                <pre><code>Sudo a2dissite 000-default.conf</code></pre>
+                <pre><code>sudo a2dissite 000-default.conf</code></pre>
                 <p>Puis vérifions que nous ne recevons aucune erreur :</p>
-                <pre><code>Sudo apache2ctl configtest</code></pre>
-                <p>La commande devrait vous répondre : « Syntax OK »</p>
+                <pre><code>sudo apache2ctl configtest</code></pre>
+                <p>La commande devrait vous répondre : « Syntax OK »</p><br>
                 <p>Il ne reste plus qu’à redémarrer Apache afin d’appliquer les changements :</p>
                 <pre><code>sudo systemctl restart apache2</code></pre>
                 <p>Vous pouvez désormais accéder à votre site web en tapant : http://votre_domaine</p>
